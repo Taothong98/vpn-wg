@@ -1,0 +1,39 @@
+services:
+  vpnserver:
+    # build:
+    #   context: .
+    #   dockerfile: dev-VPNserver/Dockerfile   
+    image: weejewel/wg-easy
+    container_name: VPNserver
+    restart: unless-stopped   
+    ports:
+      - "51820:51820/udp"
+      - "8726:51821/tcp"      
+    
+    volumes:
+      - ./wg-easy:/etc/wireguard  
+    environment:
+      - WG_HOST=localhost      
+      - PASSWORD=admin
+      - WG_PORT=51820
+      - WG_MTU=1420
+      - WG_PERSISTENT_KEEPALIVE=25
+      - WG_DEFAULT_ADDRESS=10.0.0.x
+      - WG_DEFAULT_DNS=1.1.1.1, 8.8.8.8
+      - WG_ALLOWED_IPS=0.0.0.0/0
+    cap_add:
+      - NET_ADMIN
+      - SYS_MODULE
+    sysctls:
+      - net.ipv4.conf.all.src_valid_mark=1
+      - net.ipv4.ip_forward=1
+    networks:
+      vpn-net5:
+        ipv4_address: 192.168.150.100
+
+networks:
+  vpn-net5:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 192.168.150.0/24
