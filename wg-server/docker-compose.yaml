@@ -14,7 +14,7 @@ services:
       - ./wg-easy:/etc/wireguard  
     environment:
       - WG_HOST=localhost      
-      - PASSWORD=admin
+      - PASSWORD=admin33
       - WG_PORT=51820
       - WG_MTU=1420
       - WG_PERSISTENT_KEEPALIVE=25
@@ -28,11 +28,11 @@ services:
       - net.ipv4.conf.all.src_valid_mark=1
       - net.ipv4.ip_forward=1
     networks:
-      vpn-net5:
+      vpn-net1:
         ipv4_address: 192.168.150.100
 
 networks:
-  vpn-net5:
+  vpn-net1:
     driver: bridge
     ipam:
       config:
