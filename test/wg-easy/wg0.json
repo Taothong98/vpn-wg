@@ -1,0 +1,29 @@
+{
+  "server": {
+    "privateKey": "CNlfPwof5DEv+DJrtXFjKzJiW8g4NbbARMtLcWu7A14=",
+    "publicKey": "CLNxN2mGK4YI2ldRsQyqMw/33AXT0KsHxtX+AcHtclY=",
+    "address": "10.0.0.1"
+  },
+  "clients": {
+    "3a713a84-772d-40ed-9321-901a731f0aca": {
+      "name": "Local-server",
+      "address": "192.168.200.0/24, 10.0.0.2",
+      "privateKey": "qPd58fxc6UpPJ45foCfI/Dt7VjGzZlesmCgDORTOW3w=",
+      "publicKey": "wrLi4+Ir51xxqG3LG4IaD0ySZWKOp8hsLUBNZ47ZFHc=",
+      "preSharedKey": "hn8EHvoYOIF/SF+W7FNzBMSLG/JqZ+suXYyT4mCX3Cc=",
+      "createdAt": "2025-08-18T05:54:00.858Z",
+      "updatedAt": "2025-08-18T05:54:00.858Z",
+      "enabled": true
+    },
+    "fdecaabf-c624-43b8-849b-d35e111a2052": {
+      "name": "user-test",
+      "address": "10.0.0.3",
+      "privateKey": "yAWG2XlXEaGReNHdcciknjFFZJB8slet3tNL8i3ceGE=",
+      "publicKey": "4Hrx8K4zEIuKrVpMgG3XkU29nt/e3F0KbuI4+YwaKSM=",
+      "preSharedKey": "w1UiEWembaNuagIAyQ1+w/o4JNq07sZhS1ez6Y2lGqI=",
+      "createdAt": "2025-08-18T05:54:17.413Z",
+      "updatedAt": "2025-08-18T05:54:17.414Z",
+      "enabled": true
+    }
+  }
+}
