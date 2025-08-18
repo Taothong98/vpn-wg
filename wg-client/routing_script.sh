@@ -23,7 +23,10 @@ ip route
 # ip route del 10.255.0.0/16
 ip route del 10.255.0.0/16 dev wg0
 
+iptables -I FORWARD -s 10.0.0.0/24 -d 10.255.0.0/16 -j ACCEPT
+iptables -I FORWARD -d 10.0.0.0/24 -s 10.255.0.0/16 -j ACCEPT
 
+iptables -L FORWARD -v -n
 ########################################
 192.168.151.1 คือ GateWay ของ docker 
 iptables -t nat -A POSTROUTING -d 192.168.151.0/24 -j MASQUERADE
