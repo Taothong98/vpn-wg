@@ -12,6 +12,8 @@ services:
     
     volumes:
       - ./wg-easy:/etc/wireguard  
+      - ./app:/app
+
     environment:
       - WG_HOST=localhost      
       - PASSWORD=admin33
@@ -37,3 +39,5 @@ networks:
     ipam:
       config:
         - subnet: 192.168.150.0/24
+# docker cp VPNserver:/app ./
+# /home/threerapat/app

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>WireGuard - Manage Clients</title>
+  <link href="./css/vendor/tailwind.min.css" rel="stylesheet">
+  <link rel="manifest" href="./manifest.json">
+  <link rel="icon" type="image/png" href="./img/favicon.png">
+  <link rel="apple-touch-icon" href="./img/apple-touch-icon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+</head>
+
+<style>
+  [v-cloak] {
+    display: none;
+  }
+</style>
+
+<body class="bg-gray-50">
+  <div id="app">
+    <div v-cloak class="container mx-auto max-w-3xl">
+      <div v-if="authenticated === true">
+        <div class="flex flex-row items-center">
+          <a href="./index.html"
+            class="text-sm text-gray-400 mb-10 mr-2 mt-3 cursor-pointer hover:underline float-right">
+            &larr; Back to Client List
+          </a>
+        </div>
+        <h1 class="text-4xl font-medium mt-10 mb-10">
+          <img src="./img/logo.png" width="32" class="inline align-middle" />
+          <span class="align-middle">Manage Clients via CSV</span>
+        </h1>
+
+        <div class="shadow-md rounded-lg bg-white overflow-hidden mb-10">
+          <div class="flex flex-row flex-auto items-center p-3 px-5 border-b-2 border-gray-100">
+            <div class="flex-grow">
+              <p class="text-2xl font-medium">Download Client Data</p>
+            </div>
+          </div>
+          <div class="p-5">
+            <p class="text-gray-600 mb-4">
+              Click the button below to download the current list of clients as a <code>clients.csv</code> file. You can then edit this file to add new clients and upload it again.
+            </p>
+            <button @click="downloadClientsCSV"
+              class="bg-red-800 text-white hover:bg-red-700 border-2 border-none py-2 px-4 rounded inline-flex items-center transition">
+              <svg class="w-4 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+              </svg>
+              <span>Download clients.csv</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="shadow-md rounded-lg bg-white overflow-hidden">
+          <div class="flex flex-row flex-auto items-center p-3 px-5 border-b-2 border-gray-100">
+            <div class="flex-grow">
+              <p class="text-2xl font-medium">Upload Client Data</p>
+            </div>
+          </div>
+          <div class="p-5">
+            <p class="text-gray-600 mb-4">
+              Select a <code>.csv</code> file to upload. The file must have a header row with columns: <code>name,username,password</code>. The system will create a new WireGuard client for each name in the file. Existing clients will not be affected. The <code>username</code> and <code>password</code> columns are reserved for future use.
+            </p>
+            <div class="flex items-center space-x-4">
+                <input type="file" @change="handleFileUpload" accept=".csv" ref="fileInput" class="block w-full text-sm text-gray-500
+                file:mr-4 file:py-2 file:px-4
+                file:rounded-full file:border-0
+                file:text-sm file:font-semibold
+                file:bg-red-50 file:text-red-700
+                hover:file:bg-red-100
+              "/>
+              <button @click="uploadClientsCSV" :disabled="!fileToUpload"
+                class="bg-red-800 text-white py-2 px-4 rounded inline-flex items-center transition disabled:bg-gray-300 disabled:cursor-not-allowed flex-shrink-0">
+                <svg class="w-4 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l4 4m0 0l-4 4m4-4H4" />
+                </svg>
+                <span>Upload & Create</span>
+              </button>
+            </div>
+            <div v-if="uploadStatus" class="mt-4 p-3 rounded-md text-sm"
+                :class="uploadError ? 'bg-red-100 text-red-800' : 'bg-green-100 text-green-800'">
+                <p v-html="uploadStatus"></p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div v-if="authenticated === false">
+        <div class="text-center mt-20">
+          <p class="text-gray-600">You need to be logged in to access this page.</p>
+          <a href="./index.html" class="text-red-800 hover:underline">Go to Login Page</a>
+        </div>
+      </div>
+      
+      <div v-if="authenticated === null" class="text-gray-300 pt-24 pb-12">
+        <svg class="w-5 animate-spin mx-auto" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+          <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+          <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+        </svg>
+      </div>
+    </div>
+
+    <p v-cloak class="text-center m-10 text-gray-300 text-xs">Made by <a target="_blank" class="hover:underline"
+        href="https://emilenijssen.nl/?ref=wg-easy">Emile Nijssen</a> · <a class="hover:underline"
+        href="https://github.com/sponsors/WeeJeWel" target="_blank">Donate</a> · <a class="hover:underline"
+        href="https://github.com/weejewel/wg-easy" target="_blank">GitHub</a></p>
+  </div>
+
+  <script src="./js/vendor/vue.min.js"></script>
+  <script src="./js/vendor/md5.min.js"></script>
+  <script src="./js/vendor/timeago.min.js"></script>
+  <script src="./js/api.js"></script>
+  <script src="./js/app.js"></script>
+</body>
+</html>

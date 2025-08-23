@@ -4,5 +4,56 @@
     "publicKey": "CLNxN2mGK4YI2ldRsQyqMw/33AXT0KsHxtX+AcHtclY=",
     "address": "10.0.0.1"
   },
-  "clients": {}
+  "clients": {
+    "ef247d67-b444-40b5-9e93-acedaf636cf4": {
+      "name": "test1",
+      "address": "10.0.0.2",
+      "privateKey": "MDk4xaaqO5O40V5Nn2OlTpn80O5rzfpYdX0m/PEg7WA=",
+      "publicKey": "/pDlqo87rWG7VaZ2KQq/NyyThcieQfY1yuTIYBBQo1k=",
+      "preSharedKey": "UUFFFjDd2siavflkwDk8LK93e6e9D6mj2pyGTWYt0d8=",
+      "createdAt": "2025-08-22T18:24:39.364Z",
+      "updatedAt": "2025-08-22T18:24:39.364Z",
+      "enabled": true
+    },
+    "140e2f02-9256-4d11-9e39-d27177e8acc5": {
+      "name": "test2",
+      "address": "10.0.0.3",
+      "privateKey": "MI/57NQUZ8JM0pbx/AVESWM/jsTthn+lxzsVzjAaMUw=",
+      "publicKey": "YSzVaozVKl/k/WFv3mC+YFdO+kLgKhCl8wNjWhs/FiY=",
+      "preSharedKey": "NIY51I3vTSl4h+hQGgVyN8ceAqkyzXuxiDZevjogDZI=",
+      "createdAt": "2025-08-22T18:24:39.439Z",
+      "updatedAt": "2025-08-22T18:24:39.439Z",
+      "enabled": true
+    },
+    "73bc48e4-0879-4127-8981-6e95de95acdb": {
+      "name": "test4",
+      "address": "10.0.0.4",
+      "privateKey": "EJZkJXVfTGJfyH4NwSrQvAkqNwS8Vt98LDpOGh/yuG4=",
+      "publicKey": "lvjIoRdH8TtJdlupGJQUSTIDLPpoMmlAXRYO6jHUlUE=",
+      "preSharedKey": "H73bwWCuIAjXyxCq6+ZrMtoDREaFOHsIkLT6OI424Eo=",
+      "createdAt": "2025-08-22T18:27:19.351Z",
+      "updatedAt": "2025-08-22T18:27:19.351Z",
+      "enabled": true
+    },
+    "a5b49e60-8a5a-4fee-97b6-5f01d1ac7d44": {
+      "name": "test2",
+      "address": "10.0.0.5",
+      "privateKey": "sFHj3XBEqyRcWrFXpJqIr+7WKget2Jdh4B6//OxGVEk=",
+      "publicKey": "YGaVePQwLzxIs31SYHyY8WFeK1d8IqNemW6bLf669Fo=",
+      "preSharedKey": "fsWj5NVSQhnF5SEdt20dAFy+cLWlecIghd48vwyaPkI=",
+      "createdAt": "2025-08-22T18:27:19.414Z",
+      "updatedAt": "2025-08-22T18:27:19.414Z",
+      "enabled": true
+    },
+    "5b172e71-771d-428f-8f37-dce117cf363e": {
+      "name": "test3",
+      "address": "10.0.0.6",
+      "privateKey": "eNCyf5ZSx4pvQ8fMzNwDA7r/34sRqb5dRs7r17RbRUQ=",
+      "publicKey": "/13WoJkqK/m/MhLgDo1ahezWOaqHoxjQwmFR5PuSP2U=",
+      "preSharedKey": "FU/cHrUlBZ9pWJiw3h1zYYAjy9O/qRNv/2/t8gmjF64=",
+      "createdAt": "2025-08-22T18:27:19.527Z",
+      "updatedAt": "2025-08-22T18:27:19.527Z",
+      "enabled": true
+    }
+  }
 }
